@@ -2,34 +2,52 @@ name: workflow
 
 on:
   workflow_dispatch:
-    inputs:
-      project_names:
-        description: 'Project-Names as comma separated values'
-        required: true
-      realmtype:
-        description: 'Select the type of the Realm'
-        default: 'liam-test'
-      ad_groups:
-        description: 'Provide the AD Group/JDA Delivers ID for Resource Access as comma separated values'
-        required: true
-      project_access_action:
-        description: 'Action to take on project access'
-        required: true
-        default: 'status'
-        type: choice
-        options:
-          - add
-          - remove
-          - status
-      keyvault_access_action:
-        description: 'Action to take on key-vault access'
+   inputs:
+     project_names:
+       description: 'Project-Names as comma separated values'
+       required: true
+
+     realmtype:
+       description: 'Select the type of the Realm'
+       default: 'liam-test'
+
+     ad_groups:
+       description: 'Provide the AD Group/JDA Delivers ID for Resource Access as comma separated values'
+       required: true
+
+     action_type:
+        description: 'Select the action to perform on the selected resources'
         required: true
         default: 'status'
         type: choice
         options:
-          - add
-          - remove
-          - status
+         - status
+         - add
+         - remove
+
+     update_project:
+       description: 'Apply action to project access'
+       required: false
+       default: false
+       type: boolean
+
+     update_keyvault:
+       description: 'Apply action to key-vault access'
+       required: false
+       default: false
+       type: boolean
+
+     update_eventhub:
+        description: 'Apply action to event-hub access'
+        required: false
+        default: false
+        type: boolean
+
+     update_storage:
+        description: 'Apply action to storage-account access'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   test:
