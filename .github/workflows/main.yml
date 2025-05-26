@@ -1,4 +1,5 @@
 name: workflow
+
 on:
   workflow_dispatch:
     inputs:
@@ -6,27 +7,33 @@ on:
         description: 'Project-Names as comma separated values'
         required: true
       realmtype:
-         description: 'Select the type of the Realm'
-         default: 'liam-test'
+        description: 'Select the type of the Realm'
+        default: 'liam-test'
       ad_groups:
-         description: 'Provide the AD Group/JDA Delivers ID for Resource Access as comma separated values'
-         required: true
+        description: 'Provide the AD Group/JDA Delivers ID for Resource Access as comma separated values'
+        required: true
       project_access_action:
         description: 'Action to take on project access'
         required: true
         default: 'status'
         type: choice
         options:
-         - add
-         - remove
-         - status
+          - add
+          - remove
+          - status
       keyvault_access_action:
-       description: 'Action to take on key-vault access'
-       required: true
-       default: 'status'
-       type: choice
-       options:
-       - add
-       - remove
-       - status
-     
+        description: 'Action to take on key-vault access'
+        required: true
+        default: 'status'
+        type: choice
+        options:
+          - add
+          - remove
+          - status
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        run: echo "Hello"
